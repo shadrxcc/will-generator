@@ -1,60 +1,62 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { v4 as uuidv4 } from 'uuid';
-import { createWill } from '../actions';
+import { Link, useNavigate } from 'react-router-dom';
+//import { useDispatch } from 'react-redux';
+//import { v4 as uuidv4 } from 'uuid';
 import { Form, Input, TextArea, Button } from "semantic-ui-react";
+import { createWill } from '../actions';
+//import { Link } from "react-router-dom"
 
-const Willform = () => {
 
-  const dispatch = useDispatch();
-  
-  const [firstname, firstnameInput] = useState('');
-  const [lastname, lastnameInput] = useState('');
-  const [beneficiary1, firstbenInput] = useState('');
-  const [beneficiary2, secondbenInput] = useState('');
-  const [beneficiary3, thirdbenInput] = useState('');
-  const [beneficiary4, fourthbenInput] = useState('');
-  const [possessions, possessionsInput] = useState('');
-  const handleChange = (e) => firstnameInput(e.target.value);
-  const lasthandleChange = (e) => lastnameInput(e.target.value);
-  const firstbenhandleChange = (e) => firstbenInput(e.target.value);
-  const secbenhandleChange = (e) => secondbenInput(e.target.value);
-  const thirdbenhandleChange = (e) => thirdbenInput(e.target.value);
-  const fourthbenhandleChange = (e) => fourthbenInput(e.target.value);
-  const posshandleChange = (e) => possessionsInput(e.target.value);
-  
+const Willform = (props) => {
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const will = {
-      id: uuidv4(),
-      firstname,
-      lastname,
-      beneficiary1,
-      beneficiary2,
-      beneficiary3,
-      beneficiary4,
-      possessions,
+const dispatch = useDispatch()
+const navigate = useNavigate()
+
+  const [state, setState] = useState({
+    firstname:'',
+    lastname:'',
+    beneficiary1:'',
+    beneficiary2:'',
+    beneficiary3:'',
+    beneficiary4:'',
+    possessions:''
+  });
+const will = {
+      state,
       complete: false,
     };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate('/will', {state: {firstname:'',
+    lastname:'',
+    beneficiary1:'',
+    beneficiary2:'',
+    beneficiary3:'',
+    beneficiary4:'',
+    possessions:''}})
     dispatch(createWill(will));
-    firstnameInput('');
-    lastnameInput('');
-    firstbenInput('');
-    secondbenInput('');
-    thirdbenInput('');
-    fourthbenInput('');
-    possessionsInput('');
+  };
+
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setState((prevState) => ({
+      ...prevState,
+      [name]: value
+    }));
   };
 
   return (
-    <Form className='px-5' onSubmit={handleSubmit}>
+    <div className='mt-5'>
+      <h3 className='text-center'>Generate your will</h3>
+    <Form className='px-3' onSubmit={handleSubmit}>
       <Form.Group widths="equal">
         <Form.Field
           id="form-input-control-first-name"
           control={Input}
           label="First name"
-          value={firstname}
+          name="firstname"
           placeholder="First name"
           onChange={handleChange}
         />
@@ -62,9 +64,9 @@ const Willform = () => {
           id="form-input-control-last-name"
           control={Input}
           label="Last name"
-          value={lastname}
+          name="lastname"
           placeholder="Last name"
-          onChange={lasthandleChange}
+          onChange={handleChange}
         />
       </Form.Group>
 
@@ -73,42 +75,42 @@ const Willform = () => {
           id="form-input-control-first-name"
           control={Input}
           label="First Beneficiary"
-          value={beneficiary1}
+          name="beneficiary1"
           placeholder="First Beneficiary"
-          onChange={firstbenhandleChange}
+          onChange={handleChange}
         />
         <Form.Field
           id="form-input-control-last-name"
           control={Input}
           label="Second Beneficiary"
-          value={beneficiary2}
+          name="beneficiary2"
           placeholder="Second Beneficiary"
-          onChange={secbenhandleChange}
+          onChange={handleChange}
         />
         <Form.Field
           id="form-input-control-first-name"
           control={Input}
           label="Third Beneficiary"
-          value={beneficiary3}
+          name="beneficiary3"
           placeholder="Third Beneficiary"
-          onChange={thirdbenhandleChange}
+          onChange={handleChange}
         />
         <Form.Field
           id="form-input-control-fourth-beneficiary"
           control={Input}
           label="Fourth Beneficiary"
-          value={beneficiary4}
+          name="beneficiary4"
           placeholder="Fourth Beneficiary"
-          onChange={fourthbenhandleChange}
+          onChange={handleChange}
         />
       </Form.Group>
       <Form.Field
         id="form-textarea-control-opinion"
         control={TextArea}
         label="Your Possessions"
-        value={possessions}
+        name="possessions"
         placeholder="Your Possessions"
-        onChange={posshandleChange}
+        onChange={handleChange}
       />
       <Form.Field
         id="form-button-control-public"
@@ -116,7 +118,10 @@ const Willform = () => {
         content="Submit"
         className='w-100'
       />
+      <Link to="/">
+      <Button className='bg-danger w-100 text-white px-5 py-3 rounded p-2'>Return</Button></Link>
     </Form>
+    </div>
   );
 };
 
