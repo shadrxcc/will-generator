@@ -1,14 +1,17 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Red Hat Display', sans-serif;
 }
 
 button#form-button-control-public {
   width: 100%;
+  background: #a1c4fd;
+  color: white;
+}
+
+button.rounded.mt-md-5.w-100.back.text-center.border-0.p-3 {
+  background: #a1c4fd;
+  color: white;
 }
 
 @tailwind base;

@@ -28,14 +28,8 @@ const will = {
     };
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate('/will', {state: {firstname:'',
-    lastname:'',
-    beneficiary1:'',
-    beneficiary2:'',
-    beneficiary3:'',
-    beneficiary4:'',
-    possessions:''}})
     dispatch(createWill(will));
+    navigate('/will')
   };
 
 
@@ -49,8 +43,8 @@ const will = {
 
   return (
     <div className='mt-5'>
-      <h3 className='text-center'>Generate your will</h3>
-    <Form className='px-3' onSubmit={handleSubmit}>
+      <h3 className='text-center font-bold fs-1'>Generate your will</h3>
+    <Form className='px-3 pt-4' onSubmit={handleSubmit}>
       <Form.Group widths="equal">
         <Form.Field
           id="form-input-control-first-name"
@@ -117,9 +111,10 @@ const will = {
         control={Button}
         content="Submit"
         className='w-100'
+        onClick={(e) => e.preventDefault}
       />
       <Link to="/">
-      <Button className='bg-danger w-100 text-white px-5 py-3 rounded p-2'>Return</Button></Link>
+      <Button  className='bg-danger w-100 text-white px-5 py-3 rounded p-2'>Return</Button></Link>
     </Form>
     </div>
   );

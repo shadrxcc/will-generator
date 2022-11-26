@@ -9,7 +9,7 @@ const Homepage = () => {
           <span className="d-flex flex-column">
             <h2>Tomorrow is not certain. Generate your will today.</h2>
             <Link to="/will-form">
-              <button className="rounded mt-md-5 w-100 text-center border-0 p-3">
+              <button className="rounded mt-md-5 w-100 back text-center border-0 p-3">
                 Get Started
               </button>
             </Link>
