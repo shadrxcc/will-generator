@@ -42,9 +42,9 @@ const will = {
   };
 
   return (
-    <div className='my-5'>
+    <div className='mt-5 mb-5'>
       <h3 className='text-center font-bold fs-1'>Generate your will</h3>
-    <Form className='px-3 pt-4' onSubmit={handleSubmit}>
+    <Form className='px-3 pt-4 pb-5' onSubmit={handleSubmit}>
       <Form.Group widths="equal">
         <Form.Field
           id="form-input-control-first-name"
@@ -114,7 +114,7 @@ const will = {
         onClick={(e) => e.preventDefault}
       />
       <Link to="/">
-      <Button  className='bg-danger w-100 text-white px-5 py-3 rounded p-2'>Return</Button></Link>
+      <Button  className='bg-danger w-100 text-white py-3 rounded p-1'>Return</Button></Link>
     </Form>
     </div>
   );
