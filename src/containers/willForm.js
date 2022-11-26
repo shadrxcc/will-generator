@@ -42,7 +42,7 @@ const will = {
   };
 
   return (
-    <div className='mt-5'>
+    <div className='my-5'>
       <h3 className='text-center font-bold fs-1'>Generate your will</h3>
     <Form className='px-3 pt-4' onSubmit={handleSubmit}>
       <Form.Group widths="equal">

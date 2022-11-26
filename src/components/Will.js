@@ -15,7 +15,7 @@ const Will = (state) => {
   console.log(formstate) 
   const { state: will } = formstate
   return (
-    <div className="mt-5">
+    <div className="my-5 ">
       <div className="form-details px-3">
         <h2 className="text-center font-bold fs-1">Your Will</h2>
         <div className="bg-light py-4 my-4">

@@ -1,6 +1,7 @@
 body {
   margin: 0;
   font-family: 'Red Hat Display', sans-serif;
+  overflow-x: hidden;
 }
 
 button#form-button-control-public {
